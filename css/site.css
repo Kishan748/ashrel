@@ -2030,3 +2030,16 @@ a.card:hover {
     background: linear-gradient(to bottom, rgba(18, 26, 56, .88), rgba(18, 26, 56, .94));
   }
 }
+
+/* The band photograph is right-weighted, so a narrow viewport cropping from
+   the centre loses the subjects entirely. Pull the crop toward them. */
+
+.band > img {
+  object-position: 62% 50%;
+}
+
+@media (max-width: 960px) {
+  .band > img {
+    object-position: 80% 45%;
+  }
+}
