@@ -2058,6 +2058,7 @@ a.card:hover {
 .article-lead img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   background: var(--paper);
