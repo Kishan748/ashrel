@@ -1741,3 +1741,257 @@ a.card:hover {
     padding: 48px 0 64px;
   }
 }
+
+/* ---------- Articles ---------- */
+
+.article-hero {
+  background: var(--navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.article-hero .wrap {
+  position: relative;
+  padding-top: 68px;
+  padding-bottom: 60px;
+  max-width: 900px;
+}
+
+.article-hero .tag {
+  font-size: 11.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.article-hero h1 {
+  margin: 20px 0 0;
+  font-size: 46px;
+  line-height: 1.08;
+  letter-spacing: -.032em;
+  font-weight: 700;
+}
+
+.article-hero .standfirst {
+  margin: 20px 0 0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--on-navy-4);
+  font-weight: 300;
+  max-width: 60ch;
+}
+
+.article-meta {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  font-size: 13.5px;
+  color: var(--on-navy-5);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.article-body {
+  max-width: 74ch;
+  padding: 64px 0 40px;
+}
+
+.article-body > p {
+  margin: 20px 0 0;
+  font-size: 17px;
+  line-height: 1.72;
+  color: #2C3552;
+}
+
+.article-body > p:first-child {
+  margin-top: 0;
+}
+
+.article-body h2 {
+  margin: 52px 0 0;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.22;
+}
+
+.article-body h3 {
+  margin: 36px 0 0;
+  font-size: 19.5px;
+  font-weight: 700;
+  letter-spacing: -.018em;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 18px 0 0;
+  padding-left: 24px;
+}
+
+.article-body li {
+  font-size: 17px;
+  line-height: 1.72;
+  color: #2C3552;
+  margin-top: 10px;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.article-body a {
+  border-bottom: 1px solid rgba(0, 88, 171, .3);
+}
+
+.pull {
+  margin: 44px 0 0;
+  padding: 4px 0 4px 28px;
+  border-left: 3px solid var(--cyan);
+  font-size: 22px;
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -.018em;
+  color: var(--ink);
+}
+
+.figure-note {
+  margin: 32px 0 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 24px 26px;
+}
+
+.figure-note h3 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.figure-note p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--slate-2);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0 0;
+  font-size: 14.5px;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.data-table th {
+  font-size: 11.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--mist);
+  font-weight: 700;
+  border-bottom: 2px solid var(--navy);
+}
+
+.data-table td:first-child {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.sources {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  max-width: 74ch;
+}
+
+.sources h2 {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  font-weight: 700;
+}
+
+.sources ol {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.sources li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--slate-2);
+  margin-top: 12px;
+}
+
+.article-cta {
+  margin: 56px 0 0;
+  background: var(--navy);
+  color: #fff;
+  padding: 44px 44px 46px;
+  max-width: 74ch;
+}
+
+.article-cta h2 {
+  margin: 14px 0 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+
+.article-cta p {
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--on-navy-3);
+  font-weight: 300;
+}
+
+.article-cta .btn {
+  margin-top: 26px;
+}
+
+@media (max-width: 620px) {
+  .article-hero h1 {
+    font-size: 31px;
+  }
+
+  .article-hero .standfirst {
+    font-size: 17px;
+  }
+
+  .article-body {
+    padding: 44px 0 32px;
+  }
+
+  .article-body h2 {
+    font-size: 23px;
+  }
+
+  .pull {
+    font-size: 19px;
+    padding-left: 20px;
+  }
+
+  .article-cta {
+    padding: 32px 24px 34px;
+  }
+}
