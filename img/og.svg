@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><radialGradient id="glow"><stop offset="0" stop-color="#1DB8F2" stop-opacity="0.30"/><stop offset="0.65" stop-color="#1DB8F2" stop-opacity="0.07"/><stop offset="1" stop-color="#1DB8F2" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="630" fill="#121A38"/>
+  <g stroke="#ffffff" stroke-opacity="0.055" stroke-width="1">
+    <path d="M78 0V630M156 0V630M234 0V630M312 0V630M390 0V630M468 0V630M546 0V630M624 0V630M702 0V630M780 0V630M858 0V630M936 0V630M1014 0V630M1092 0V630M1170 0V630"/>
+    <path d="M0 78H1200M0 156H1200M0 234H1200M0 312H1200M0 390H1200M0 468H1200M0 546H1200M0 624H1200"/>
+  </g>
+  <circle cx="1090" cy="80" r="420" fill="url(#glow)"/>
+  <g transform="translate(80,80)">
+    <rect width="64" height="64" rx="9" fill="#0058AB"/>
+    <path d="M17 47 L32 17 L47 47" fill="none" stroke="#ffffff" stroke-width="5.1"/>
+    <path d="M24.3 37.5 L39.7 37.5" fill="none" stroke="#00D5D0" stroke-width="5.1"/>
+  </g>
+  <text x="164" y="128" font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="bold" fill="#ffffff" letter-spacing="-1">Ashrel</text>
+  <text x="80" y="330" font-family="Helvetica, Arial, sans-serif" font-size="66" font-weight="bold" fill="#ffffff" letter-spacing="-2.4">The specialist search</text>
+  <text x="80" y="404" font-family="Helvetica, Arial, sans-serif" font-size="66" font-weight="bold" fill="#ffffff" letter-spacing="-2.4">practice for AI talent.</text>
+  <rect x="80" y="452" width="72" height="5" fill="#1DB8F2"/>
+  <text x="80" y="520" font-family="Helvetica, Arial, sans-serif" font-size="27" fill="#B8C2D8">Permanent AI, machine learning and data leadership</text>
+  <text x="80" y="558" font-family="Helvetica, Arial, sans-serif" font-size="27" fill="#B8C2D8">search for Australian enterprise.</text>
+</svg>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Ubuntu';src:url('fonts/Ubuntu-Light.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Ubuntu';src:url('fonts/Ubuntu-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Ubuntu';src:url('fonts/Ubuntu-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Ubuntu';src:url('fonts/Ubuntu-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Ubuntu',system-ui,sans-serif;background:#fff;color:#121A38;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:#0058AB;text-decoration:none}
+a:hover{color:#1DB8F2}
+input,textarea,select,button{font-family:inherit}
+@keyframes ash-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+@keyframes ash-sweep{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
+</style>
+<script src="./image-slot.js"></script>
+<script>if(!window.THREE&&!window.__ashrelThreeLoading){window.__ashrelThreeLoading=1;var t=document.createElement('script');t.src='https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';document.head.appendChild(t)}</script>
+<script src="./structure-flow.js"></script>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid #E4E9F0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:74px;display:flex;align-items:center;gap:44px">
+    <a href="#top" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;color:#121A38">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="0" y="0" width="30" height="30" rx="4" fill="#121A38"></rect>
+        <path d="M8 22 L15 8 L22 22" fill="none" stroke="#1DB8F2" stroke-width="2.4"></path>
+        <path d="M11.4 17.6 L18.6 17.6" fill="none" stroke="#00D5D0" stroke-width="2.4"></path>
+      </svg>
+      <span style="font-size:20px;font-weight:700;letter-spacing:-.02em">Ashrel</span>
+    </a>
+    <nav style="display:flex;gap:30px;align-items:center;margin-left:auto">
+      <a href="#practice" onClick="{{ goHome }}" style="font-size:14.5px;font-weight:500;color:#3B4560">Practice</a>
+      <a href="#process" onClick="{{ goHome }}" style="font-size:14.5px;font-weight:500;color:#3B4560">Process</a>
+      <a href="#evidence" onClick="{{ goHome }}" style="font-size:14.5px;font-weight:500;color:#3B4560">Evidence</a>
+      <a href="#insights" onClick="{{ goInsights }}" style="font-size:14.5px;font-weight:500;color:#3B4560">Insights</a>
+      <a href="#brief" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:8px;background:#121A38;color:#fff;padding:11px 20px;border-radius:3px;font-size:14.5px;font-weight:500" style-hover="background:#0058AB;color:#fff">{{ ctaLabel }}<span style="font-size:15px">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main id="top" style="flex:1">
+
+  <section style="position:relative;background:#121A38;color:#fff;overflow:hidden">
+    <sc-if value="{{ heroEffect }}" hint-placeholder-val="{{ true }}">
+      <structure-flow speed="0.45" point-size="0.05" opacity="0.16" count="9000" blend="normal" color="#B7D8EA" style="position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent 12%,rgba(0,0,0,.55) 55%,black 100%);mask-image:linear-gradient(to bottom,transparent 12%,rgba(0,0,0,.55) 55%,black 100%)"></structure-flow>
+    </sc-if>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:78px 78px;pointer-events:none"></div>
+    <div style="position:absolute;top:-160px;right:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(29,184,242,.2),transparent 66%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:96px 40px 88px;display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:start">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:7px 15px 7px 12px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#D4D3F1;font-weight:500">
+          <span style="width:7px;height:7px;border-radius:50%;background:#00D5D0;animation:ash-pulse 2.2s ease-in-out infinite"></span>
+          Permanent AI search · Australia
+        </div>
+        <h1 style="margin:26px 0 0;font-size:64px;line-height:1.03;letter-spacing:-.035em;font-weight:700;max-width:14ch">The specialist search practice for AI talent.</h1>
+        <p style="margin:26px 0 0;font-size:19.5px;line-height:1.6;color:#B8C2D8;max-width:52ch;font-weight:300">Ashrel places permanent AI, machine learning and data leadership into Australian banks, insurers and enterprises. Deep domain mapping, a calibrated shortlist inside ten business days, and no volume-agency noise.</p>
+        <div style="display:flex;gap:14px;margin-top:38px;flex-wrap:wrap">
+          <a href="#brief" style="display:flex;align-items:center;gap:9px;background:#1DB8F2;color:#121A38;padding:16px 26px;border-radius:3px;font-size:15.5px;font-weight:700" style-hover="background:#00D5D0;color:#121A38">Book a discovery call<span>→</span></a>
+          <a href="#evidence" style="display:flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.28);color:#fff;padding:16px 26px;border-radius:3px;font-size:15.5px;font-weight:500" style-hover="border-color:#1DB8F2;color:#1DB8F2">See the evidence</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045);border-radius:6px;overflow:hidden;position:relative">
+        <div style="position:absolute;left:0;top:0;width:2px;height:26%;background:linear-gradient(#00D5D0,transparent);animation:ash-sweep 4.6s linear infinite"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.12)">
+          <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8E9BB8;font-weight:500">The engagement</span>
+          <span style="font-size:11.5px;letter-spacing:.06em;color:#00D5D0;font-weight:500">What you get, every time</span>
+        </div>
+        <sc-for list="{{ engagement }}" as="m" hint-placeholder-count="5">
+          <div style="display:flex;align-items:flex-start;gap:20px;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.08)">
+            <div style="width:96px;flex-shrink:0;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6E7B99;font-weight:700;padding-top:3px">{{ m.label }}</div>
+            <div style="flex:1;min-width:0;font-size:15.5px;font-weight:500;color:#fff;line-height:1.45">{{ m.value }}</div>
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:rgba(29,184,242,.1)">
+          <div style="font-size:14.5px;color:#D9DFEA;line-height:1.45">No retainer taken until the scorecard is signed off.</div>
+          <a href="#brief" style="font-size:12.5px;font-weight:500;color:#00D5D0;border-bottom:1px solid rgba(0,213,208,.45);padding-bottom:2px;white-space:nowrap">Start a brief</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showMetrics }}" hint-placeholder-val="{{ true }}">
+  <section style="background:#0058AB;color:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr)">
+      <sc-for list="{{ metrics }}" as="k" hint-placeholder-count="4">
+        <div style="padding:34px 30px 34px 0;border-left:1px solid rgba(255,255,255,.18);padding-left:30px">
+          <div style="font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1">{{ k.value }}</div>
+          <div style="font-size:13.5px;color:#C6DEF4;margin-top:8px;line-height:1.45">{{ k.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="practice" style="max-width:1240px;margin:0 auto;padding:104px 40px 24px">
+    <div style="display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:end">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0058AB;font-weight:700">01 / Practice</div>
+        <h2 style="margin:18px 0 0;font-size:44px;line-height:1.08;letter-spacing:-.03em;font-weight:700">Where we go deep</h2>
+      </div>
+      <p style="margin:0;font-size:17.5px;line-height:1.65;color:#5A6480;max-width:56ch">AI hiring fails when a generalist recruiter screens on keywords. Every Ashrel search is run against a live map of the Australian market: who is building what, who is available, and who is worth the conversation.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E4E9F0;margin-top:56px;border:1px solid #E4E9F0">
+      <sc-for list="{{ practice }}" as="p" hint-placeholder-count="8">
+        <div style="background:#fff;padding:30px 26px 34px" style-hover="background:#F5F9FD">
+          <div style="width:30px;height:3px;background:#1DB8F2"></div>
+          <h3 style="margin:22px 0 0;font-size:19.5px;font-weight:700;letter-spacing:-.015em;line-height:1.3">{{ p.title }}</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.62;color:#5A6480">{{ p.body }}</p>
+          <div style="margin-top:20px;font-size:13px;color:#8892AB;line-height:1.5">{{ p.roles }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:26px 0 0;font-size:15px;color:#8892AB">Banking, insurance and superannuation are our core. We take selected mandates in health, government, energy and retail where the AI role profile is the same.</p>
+  </section>
+
+  <section id="process" style="margin-top:104px;background:#F5F7FA;border-top:1px solid #E4E9F0;border-bottom:1px solid #E4E9F0">
+    <div style="max-width:1240px;margin:0 auto;padding:96px 40px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0058AB;font-weight:700">02 / Process</div>
+      <h2 style="margin:18px 0 0;font-size:44px;line-height:1.08;letter-spacing:-.03em;font-weight:700;max-width:22ch">A shortlist you can act on, not a stack of CVs</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:60px">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #E4E9F0;border-top:3px solid #121A38;padding:30px 26px 32px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <span style="font-size:13px;font-weight:700;color:#0058AB;letter-spacing:.08em">{{ s.num }}</span>
+              <span style="font-size:12px;font-weight:500;color:#121A38;background:#D4D3F1;border-radius:3px;padding:4px 9px">{{ s.when }}</span>
+            </div>
+            <h3 style="margin:0;font-size:20px;font-weight:700;letter-spacing:-.02em">{{ s.title }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.62;color:#5A6480">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:44px;border:1px solid #E4E9F0;background:#fff">
+        <sc-for list="{{ commitments }}" as="c" hint-placeholder-count="3">
+          <div style="flex:1;min-width:240px;padding:24px 28px;border-right:1px solid #E4E9F0;display:flex;gap:14px;align-items:flex-start">
+            <span style="color:#00828E;font-size:18px;line-height:1;font-weight:700">✓</span>
+            <span style="font-size:15px;line-height:1.55;color:#3B4560">{{ c }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="evidence" style="max-width:1240px;margin:0 auto;padding:104px 40px 0">
+    <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0058AB;font-weight:700">03 / Evidence</div>
+    <h2 style="margin:18px 0 0;font-size:44px;line-height:1.08;letter-spacing:-.03em;font-weight:700;max-width:24ch">Recent searches, anonymised</h2>
+    <p style="margin:16px 0 0;font-size:17px;color:#5A6480;max-width:62ch;line-height:1.65">Client names are withheld by agreement. Sector, mandate and outcome are exactly as delivered.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <article style="border:1px solid #E4E9F0;display:flex;flex-direction:column">
+          <div style="height:158px;position:relative;background:#121A38">
+            <image-slot id="{{ c.slotId }}" src="{{ c.img }}" shape="rect" placeholder="{{ c.slotHint }}"></image-slot>
+          </div>
+          <div style="padding:28px 26px 30px;display:flex;flex-direction:column;gap:14px;flex:1">
+            <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#00828E;font-weight:700">{{ c.sector }}</div>
+            <h3 style="margin:0;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.28">{{ c.title }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.62;color:#5A6480;flex:1">{{ c.body }}</p>
+            <div style="display:flex;gap:26px;border-top:1px solid #E4E9F0;padding-top:16px">
+              <div>
+                <div style="font-size:24px;font-weight:700;letter-spacing:-.02em">{{ c.statA }}</div>
+                <div style="font-size:12px;color:#8892AB;margin-top:2px">{{ c.statALabel }}</div>
+              </div>
+              <div>
+                <div style="font-size:24px;font-weight:700;letter-spacing:-.02em">{{ c.statB }}</div>
+                <div style="font-size:12px;color:#8892AB;margin-top:2px">{{ c.statBLabel }}</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="position:relative;height:540px;margin-top:104px;background:#121A38;overflow:hidden">
+    <image-slot id="ash-band-people" shape="rect" fit="cover" placeholder="Wide photo of people at work — landscape, room on the left for text"></image-slot>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,26,56,.94) 0%,rgba(18,26,56,.78) 40%,rgba(18,26,56,.1) 92%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;pointer-events:none">
+      <div style="max-width:1240px;margin:0 auto;padding:0 40px;width:100%">
+        <div style="max-width:34ch;color:#fff">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1DB8F2;font-weight:700">The hire behind the headcount</div>
+          <h2 style="margin:20px 0 0;font-size:42px;line-height:1.1;letter-spacing:-.032em;font-weight:700">Every AI mandate is a person deciding to leave somewhere good</h2>
+          <p style="margin:20px 0 0;font-size:17.5px;line-height:1.65;color:#C3CDE0;font-weight:300">Which is why the pitch matters as much as the search. We represent your team the way you would.</p>
+          <a href="#brief" style="display:inline-flex;align-items:center;gap:9px;margin-top:30px;background:#1DB8F2;color:#121A38;padding:15px 24px;border-radius:3px;font-size:15px;font-weight:700;pointer-events:auto" style-hover="background:#00D5D0;color:#121A38">Start a brief<span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:96px auto 0;padding:0 40px">
+    <div style="background:#121A38;color:#fff;padding:72px 64px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:64px 64px;pointer-events:none"></div>
+      <div style="position:relative">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1DB8F2;font-weight:700">What clients say</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:44px">
+          <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:20px">
+              <blockquote style="margin:0;font-size:19px;line-height:1.55;font-weight:300;color:#EEF2F9;letter-spacing:-.01em">“{{ q.text }}”</blockquote>
+              <figcaption style="font-size:13.5px;color:#8E9BB8;line-height:1.55;border-top:1px solid rgba(255,255,255,.16);padding-top:16px">{{ q.who }}</figcaption>
+            </figure>
+          </sc-for>
+        </div>
+        <p style="margin:40px 0 0;font-size:13px;color:#6E7B99">Attributed on request. Several clients prefer their AI hiring stay off the record.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:104px 40px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0058AB;font-weight:700">04 / Insights</div>
+        <h2 style="margin:18px 0 0;font-size:44px;line-height:1.08;letter-spacing:-.03em;font-weight:700">The AI talent market, read closely</h2>
+      </div>
+      <a href="#insights" onClick="{{ goInsights }}" style="font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;border-bottom:1px solid #1DB8F2;padding-bottom:4px">All insights<span>→</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px">
+      <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+        <a href="#insights" onClick="{{ goInsights }}" style="border:1px solid #E4E9F0;display:flex;flex-direction:column;color:#121A38" style-hover="border-color:#1DB8F2;color:#121A38">
+          <div style="height:170px;position:relative;background:#F5F7FA">
+            <image-slot id="{{ p.slotId }}" src="{{ p.img }}" shape="rect" placeholder="{{ p.slotHint }}"></image-slot>
+          </div>
+          <div style="padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1">
+            <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#0058AB;font-weight:700">{{ p.tag }}</div>
+            <h3 style="margin:0;font-size:19px;font-weight:700;line-height:1.32;letter-spacing:-.018em">{{ p.title }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#5A6480;flex:1">{{ p.excerpt }}</p>
+            <div style="font-size:12.5px;color:#8892AB">{{ p.meta }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:1240px;margin:0 auto;padding:104px 40px 0">
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:72px">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0058AB;font-weight:700">05 / Questions</div>
+        <h2 style="margin:18px 0 0;font-size:38px;line-height:1.1;letter-spacing:-.03em;font-weight:700">Before you brief us</h2>
+      </div>
+      <div style="border-top:1px solid #E4E9F0">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid #E4E9F0">
+            <button type="button" onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;background:none;border:0;padding:24px 0;text-align:left;cursor:pointer;color:#121A38;font-size:18px;font-weight:500;letter-spacing:-.015em">
+              {{ f.q }}
+              <span style="font-size:22px;color:#0058AB;line-height:1;flex-shrink:0">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:0 60px 26px 0;font-size:15.5px;line-height:1.68;color:#5A6480">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="brief" style="margin-top:104px;background:#F5F7FA;border-top:1px solid #E4E9F0">
+    <div style="max-width:1240px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div>
+        <h2 style="margin:0;font-size:44px;line-height:1.08;letter-spacing:-.03em;font-weight:700;max-width:18ch">Tell us what you need to hire</h2>
+        <p style="margin:22px 0 0;font-size:17.5px;line-height:1.65;color:#5A6480;max-width:48ch">A thirty-minute call is enough to tell you whether the role is placeable, what the market pays, and how long it will take. No obligation, no database spam.</p>
+        <div style="margin-top:40px;display:flex;flex-direction:column;gap:1px;background:#E4E9F0;border:1px solid #E4E9F0">
+          <sc-for list="{{ contactRows }}" as="r" hint-placeholder-count="3">
+            <div style="background:#fff;padding:20px 24px;display:flex;justify-content:space-between;gap:20px;align-items:center">
+              <span style="font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#8892AB;font-weight:700">{{ r.k }}</span>
+              <span style="font-size:15.5px;font-weight:500">{{ r.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="background:#fff;border:1px solid #E4E9F0;padding:38px 36px 34px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#5A6480;font-weight:700">Name
+            <input type="text" placeholder="Your name" style="border:1px solid #D9E0EA;border-radius:2px;padding:13px 14px;font-size:15.5px;color:#121A38;font-weight:400;letter-spacing:0;text-transform:none" style-focus="outline:none;border-color:#0058AB" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#5A6480;font-weight:700">Work email
+            <input type="email" placeholder="name@company.com.au" style="border:1px solid #D9E0EA;border-radius:2px;padding:13px 14px;font-size:15.5px;color:#121A38;font-weight:400;letter-spacing:0;text-transform:none" style-focus="outline:none;border-color:#0058AB" />
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#5A6480;font-weight:700">Company
+          <input type="text" placeholder="Organisation" style="border:1px solid #D9E0EA;border-radius:2px;padding:13px 14px;font-size:15.5px;color:#121A38;font-weight:400;letter-spacing:0;text-transform:none" style-focus="outline:none;border-color:#0058AB" />
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#5A6480;font-weight:700">Role you are hiring
+          <select style="border:1px solid #D9E0EA;border-radius:2px;padding:13px 14px;font-size:15.5px;color:#121A38;font-weight:400;letter-spacing:0;text-transform:none;background:#fff" style-focus="outline:none;border-color:#0058AB">
+            <optgroup label="Leadership & strategy">
+              <option>Head of AI / Chief AI Officer</option>
+              <option>AI Strategy Lead</option>
+              <option>AI Product Lead / AI Product Manager</option>
+              <option>AI Delivery Lead / Program Lead</option>
+              <option>Head of Data Science</option>
+            </optgroup>
+            <optgroup label="Engineering & science">
+              <option>Machine Learning Engineer</option>
+              <option>Forward Deployed Engineer (FDE)</option>
+              <option>Data Scientist / Applied Scientist</option>
+              <option>Generative AI / LLM Engineer</option>
+              <option>MLOps / AI Platform Engineer</option>
+              <option>AI Solutions Architect</option>
+              <option>Data Engineer</option>
+            </optgroup>
+            <optgroup label="Risk & governance">
+              <option>AI Governance Lead</option>
+              <option>Model Risk / Model Validation</option>
+              <option>Responsible AI / AI Assurance</option>
+            </optgroup>
+            <option>Multiple roles / building a team</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#5A6480;font-weight:700">Context
+          <textarea rows="4" placeholder="Team, seniority, budget range, timeline" style="border:1px solid #D9E0EA;border-radius:2px;padding:13px 14px;font-size:15.5px;color:#121A38;font-weight:400;letter-spacing:0;text-transform:none;resize:vertical" style-focus="outline:none;border-color:#0058AB"></textarea>
+        </label>
+        <button type="submit" style="background:#121A38;color:#fff;border:0;border-radius:3px;padding:16px 24px;font-size:15.5px;font-weight:700;cursor:pointer" style-hover="background:#0058AB">Request the call</button>
+        <p style="margin:0;font-size:12.5px;color:#8892AB;line-height:1.55">We reply within one business day. Your brief is never shared or added to a mailing list.</p>
+      </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border:1px solid #00828E;border-top:3px solid #00828E;padding:56px 40px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#00828E;font-weight:700">Brief received</div>
+        <h3 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-.025em">Thank you. We will be in touch within one business day.</h3>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6480">You will get an initial market read on the role before the call, so the thirty minutes are spent on decisions rather than background.</p>
+        <button type="button" onClick="{{ reset }}" style="align-self:flex-start;margin-top:8px;background:none;border:1px solid #D9E0EA;border-radius:3px;padding:12px 20px;font-size:14.5px;font-weight:500;cursor:pointer;color:#121A38" style-hover="border-color:#0058AB">Submit another brief</button>
+      </div>
+      </sc-if>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isInsights }}" hint-placeholder-val="{{ false }}">
+<main id="insights" style="flex:1">
+  <section style="background:#121A38;color:#fff;position:relative;overflow:hidden">
+    <sc-if value="{{ heroEffect }}" hint-placeholder-val="{{ true }}">
+      <structure-flow speed="0.4" point-size="0.045" opacity="0.13" count="8000" blend="normal" color="#B7D8EA" style="position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent 14%,rgba(0,0,0,.5) 58%,black 100%);mask-image:linear-gradient(to bottom,transparent 14%,rgba(0,0,0,.5) 58%,black 100%)"></structure-flow>
+    </sc-if>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:78px 78px;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:84px 40px 76px">
+      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1DB8F2;font-weight:700">Insights</div>
+      <h1 style="margin:20px 0 0;font-size:54px;line-height:1.05;letter-spacing:-.035em;font-weight:700;max-width:20ch">Notes on the Australian AI talent market</h1>
+      <p style="margin:22px 0 0;font-size:18.5px;line-height:1.62;color:#B8C2D8;max-width:60ch;font-weight:300">Salary movement, capability gaps and hiring patterns we see in banking, insurance and beyond. Written for people who have to make the hire.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:0 40px">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;padding:26px 0;border-bottom:1px solid #E4E9F0">
+      <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5">
+        <button type="button" onClick="{{ t.select }}" style="border:1px solid #E4E9F0;background:{{ t.bg }};color:{{ t.fg }};border-radius:100px;padding:9px 18px;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#0058AB">{{ t.name }}</button>
+      </sc-for>
+    </div>
+
+    <article style="display:grid;grid-template-columns:1.05fr .95fr;gap:52px;padding:56px 0;border-bottom:1px solid #E4E9F0;align-items:center">
+      <div style="height:360px;position:relative;background:#F5F7FA;border:1px solid #E4E9F0">
+        <image-slot id="ash-blog-hero" src="img/blog-hero.png" shape="rect" placeholder="Lead article image"></image-slot>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#121A38;font-weight:700;background:#FEB100;padding:5px 10px;border-radius:2px">Lead article</span>
+          <span style="font-size:12.5px;color:#8892AB">{{ lead.meta }}</span>
+        </div>
+        <h2 style="margin:22px 0 0;font-size:38px;line-height:1.12;letter-spacing:-.032em;font-weight:700">{{ lead.title }}</h2>
+        <p style="margin:18px 0 0;font-size:17px;line-height:1.68;color:#5A6480;max-width:54ch">{{ lead.excerpt }}</p>
+        <a href="#insights" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:15.5px;font-weight:500;border-bottom:1px solid #1DB8F2;padding-bottom:4px">Read the article<span>→</span></a>
+      </div>
+    </article>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:56px 0 0;align-items:start">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+        <a href="#insights" style="background:#fff;border:1px solid #E4E9F0;display:flex;flex-direction:column;color:#121A38" style-hover="border-color:#1DB8F2;color:#121A38">
+          <div style="height:180px;position:relative;background:#F5F7FA">
+            <image-slot id="{{ p.slotId }}" src="{{ p.img }}" shape="rect" placeholder="{{ p.slotHint }}"></image-slot>
+          </div>
+          <div style="padding:26px 26px 30px;display:flex;flex-direction:column;gap:12px;flex:1">
+            <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#0058AB;font-weight:700">{{ p.tag }}</div>
+            <h3 style="margin:0;font-size:19.5px;font-weight:700;line-height:1.3;letter-spacing:-.018em">{{ p.title }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#5A6480;flex:1">{{ p.excerpt }}</p>
+            <div style="font-size:12.5px;color:#8892AB;border-top:1px solid #EEF1F6;padding-top:14px">{{ p.meta }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;background:#D4D3F1;padding:48px 52px;margin:56px 0 0">
+      <div>
+        <h3 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-.028em">The Ashrel AI Salary Brief</h3>
+        <p style="margin:12px 0 0;font-size:16px;line-height:1.62;color:#3B4560;max-width:58ch">Quarterly benchmarks for AI and machine learning roles across Australian financial services. One email, no follow-up sequence.</p>
+      </div>
+      <form onSubmit="{{ subscribe }}" style="display:flex;gap:10px">
+        <input type="email" placeholder="Work email" style="border:1px solid #B7B5DE;background:#fff;border-radius:2px;padding:14px 16px;font-size:15.5px;min-width:260px" style-focus="outline:none;border-color:#121A38" />
+        <button type="submit" style="background:#121A38;color:#fff;border:0;border-radius:3px;padding:14px 24px;font-size:15.5px;font-weight:700;cursor:pointer;white-space:nowrap" style-hover="background:#0058AB">{{ subscribeLabel }}</button>
+      </form>
+    </div>
+    <div style="height:96px"></div>
+  </section>
+</main>
+</sc-if>
+
+<footer style="background:#121A38;color:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:72px 40px 34px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px">
+    <div>
+      <div style="display:flex;align-items:center;gap:11px">
+        <svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true">
+          <rect x="0" y="0" width="30" height="30" rx="4" fill="#0058AB"></rect>
+          <path d="M8 22 L15 8 L22 22" fill="none" stroke="#fff" stroke-width="2.4"></path>
+          <path d="M11.4 17.6 L18.6 17.6" fill="none" stroke="#00D5D0" stroke-width="2.4"></path>
+        </svg>
+        <span style="font-size:19px;font-weight:700;letter-spacing:-.02em">Ashrel</span>
+      </div>
+      <p style="margin:20px 0 0;font-size:15px;line-height:1.62;color:#8E9BB8;max-width:34ch">Permanent AI and machine learning search for Australian enterprise. Retained and exclusive mandates.</p>
+      <div style="margin-top:22px;font-size:15px;color:#D4D3F1">hello@ashrel.com</div>
+    </div>
+    <div>
+      <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6E7B99;font-weight:700">Practice</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+        <a href="#practice" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">Machine learning</a>
+        <a href="#practice" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">Data science</a>
+        <a href="#practice" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">AI platform & MLOps</a>
+        <a href="#practice" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">AI risk & governance</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6E7B99;font-weight:700">Company</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+        <a href="#process" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">How we work</a>
+        <a href="#evidence" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">Case studies</a>
+        <a href="#insights" onClick="{{ goInsights }}" style="font-size:14.5px;color:#D9DFEA">Insights</a>
+        <a href="#brief" onClick="{{ goHome }}" style="font-size:14.5px;color:#D9DFEA">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6E7B99;font-weight:700">Coverage</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px;font-size:14.5px;color:#8E9BB8">
+        <span>Sydney · Melbourne</span>
+        <span>Brisbane · Perth</span>
+        <span>Canberra · Adelaide</span>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:22px 40px 40px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:13px;color:#6E7B99">
+    <span>© 2026 Ashrel. All rights reserved.</span>
+    <div style="display:flex;gap:24px">
+      <a href="#top" onClick="{{ goHome }}" style="color:#6E7B99">Privacy</a>
+      <a href="#top" onClick="{{ goHome }}" style="color:#6E7B99">Terms</a>
+      <a href="#top" onClick="{{ goHome }}" style="color:#6E7B99">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book a call&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showMetrics&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;heroEffect&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero effect&quot;}}">
+class Component extends DCLogic {
+  state = { view: 'home', faq: 0, sent: false, topic: 'All topics', subscribed: false };
+
+  nav(view) {
+    return (e) => {
+      const href = e && e.currentTarget ? e.currentTarget.getAttribute('href') : null;
+      const id = href && href.charAt(0) === '#' ? href.slice(1) : null;
+      if (e) e.preventDefault();
+      const jump = () => {
+        if (!id) return;
+        const el = document.getElementById(id);
+        if (!el) { window.scrollTo({ top: 0 }); return; }
+        const y = el.getBoundingClientRect().top + window.scrollY - 74;
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+      };
+      if (this.state.view === view) { jump(); return; }
+      this.setState({ view }, () => requestAnimationFrame(jump));
+    };
+  }
+
+  filterPosts(list) {
+    const t = this.state.topic;
+    return t === 'All topics' ? list : list.filter((p) => p.tag === t);
+  }
+
+  renderVals() {
+    const P = this.props;
+    const faqData = [
+      ["Do you work on contract or permanent roles?", "Permanent only. Every mandate is a hire you intend to keep, which is why we invest in mapping rather than volume."],
+      ["Which sectors do you cover?", "Banking, insurance and superannuation are the core of the practice. We take selected mandates in health, government, energy and retail where the AI role profile is comparable."],
+      ["How is Ashrel different from a large agency?", "You deal with the person running the search. No account manager handoff, no CV forwarding, and no candidate sent without a written assessment against your calibration brief."],
+      ["What does the engagement cost?", "A percentage of first-year fixed remuneration, agreed in writing before the search begins. Retained and exclusive terms carry different rates, which we will quote on the call."],
+      ["Do you guarantee the hire?", "Every placement carries a replacement period agreed in the terms. In practice, calibration up front is what prevents the problem."],
+      ["Can you work confidentially?", "Yes. A large share of our mandates are unannounced roles or replacements, and are handled without the market knowing the client."]
+    ];
+
+    const topicNames = ['All topics', 'Salary & benchmarks', 'Hiring strategy', 'AI governance', 'Market signals'];
+
+    return {
+      ctaLabel: P.ctaLabel ?? 'Book a call',
+      showMetrics: P.showMetrics ?? true,
+      showFaq: P.showFaq ?? true,
+      heroEffect: P.heroEffect ?? true,
+      isHome: this.state.view === 'home',
+      isInsights: this.state.view === 'insights',
+      goHome: this.nav('home'),
+      goInsights: this.nav('insights'),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+      subscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
+      subscribeLabel: this.state.subscribed ? 'Subscribed' : 'Send it to me',
+
+      engagement: [
+        { label: 'Scope', value: 'Permanent hires only' },
+        { label: 'Market', value: 'Australia, national coverage' },
+        { label: 'Terms', value: 'Retained or exclusive' },
+        { label: 'Shortlist', value: '3 to 5 candidates, each with a written assessment' },
+        { label: 'Contact', value: 'One person, start to finish' }
+      ],
+
+      metrics: [
+        { value: '10 days', label: 'From signed brief to calibrated shortlist' },
+        { value: '3 to 5', label: 'Candidates per shortlist, never a CV dump' },
+        { value: '100%', label: 'Permanent, retained or exclusive mandates' },
+        { value: 'AU only', label: 'Single market focus: Australia, end to end' }
+      ],
+
+      practice: [
+        { title: 'Machine Learning Engineering', body: 'Engineers who ship models into regulated production environments, not notebook prototypes.', roles: 'Senior → Principal · Staff · Team lead' },
+        { title: 'Data Science & Applied Research', body: 'Applied scientists with commercial judgement across pricing, fraud, credit decisioning and claims.', roles: 'Senior · Lead · Head of Data Science' },
+        { title: 'MLOps & AI Platform', body: 'The platform layer that makes AI repeatable: feature stores, serving, evaluation, observability.', roles: 'Platform engineer · SRE for ML · Head of Platform' },
+        { title: 'Generative AI & LLM Engineering', body: 'Retrieval, evaluation and agent architecture built by people who have run it at scale.', roles: 'LLM engineer · Solutions architect · Lead' },
+        { title: 'AI Risk, Governance & Assurance', body: 'Model risk, validation and assurance talent fluent in APRA and privacy obligations.', roles: 'Model validator · AI risk lead · Head of Governance' },
+        { title: 'AI Product & Delivery Leadership', body: 'Product and delivery leaders who can hold a roadmap between the business and the model.', roles: 'AI product manager · Delivery lead · Chapter lead' },
+        { title: 'Forward Deployed Engineering', body: 'Engineers who sit inside the client, translate the problem and build the thing: commercial instinct with real depth.', roles: 'Forward deployed engineer · Solutions engineer · Lead' },
+        { title: 'AI Strategy & Governance', body: 'Leaders who set the AI agenda and the guardrails around it: operating model, investment case, policy and board reporting.', roles: 'Head of AI · AI strategy lead · Chief AI Officer' }
+      ],
+
+      steps: [
+        { num: 'STEP 01', when: 'Day 0', title: 'Calibrate', body: 'A structured briefing session produces a written scorecard: must-haves, trade-offs, compensation reality and the two profiles most likely to succeed.' },
+        { num: 'STEP 02', when: 'Days 1–4', title: 'Map', body: 'We build the full addressable market for the role in Australia, not a keyword search. You see the map, including who we deliberately excluded.' },
+        { num: 'STEP 03', when: 'Days 5–10', title: 'Shortlist', body: 'Three to five candidates, each with a written assessment against the scorecard, motivation, notice period and salary expectation stated up front.' },
+        { num: 'STEP 04', when: 'Weeks 3–6', title: 'Land', body: 'Interview coordination, structured feedback loops, offer strategy and counter-offer management through to the signed start date.' }
+      ],
+
+      commitments: [
+        'You always speak to the person running your search. No handoff.',
+        'No candidate is presented without a written assessment.',
+        'We tell you when a role is not placeable at the salary on offer.'
+      ],
+
+      cases: [
+        { img: 'img/case-1.png', slotId: 'ash-case-1', slotHint: 'Banking case image', sector: 'Tier-1 Bank', title: 'A model risk function built from one hire', body: 'The bank needed an AI governance lead who could satisfy the regulator and hold credibility with engineers. Nine candidates existed nationally; we mapped all of them.', statA: '11 days', statALabel: 'To shortlist', statB: '5 weeks', statBLabel: 'To signed offer' },
+        { img: 'img/case-2.png', slotId: 'ash-case-2', slotHint: 'Insurance case image', sector: 'General Insurance', title: 'An applied ML pod for claims automation', body: 'Four permanent hires across engineering and applied science, sequenced so the lead was in place before the team landed underneath.', statA: '4 hires', statALabel: 'In one quarter', statB: '0', statBLabel: 'Drop-offs at offer' },
+        { img: 'img/case-3.png', slotId: 'ash-case-3', slotHint: 'Superannuation case image', sector: 'Superannuation', title: 'A confidential replacement, never advertised', body: 'An incumbent leader was exiting. The search ran silently for six weeks with no market signal and no internal disruption.', statA: '6 weeks', statALabel: 'End to end', statB: '3', statBLabel: 'Candidates presented' }
+      ],
+
+      quotes: [
+        { text: 'The first shortlist was the shortlist. Three people, all of whom we would have hired, with the trade-offs written down before we met them.', who: 'Head of Talent Acquisition, Australian retail bank' },
+        { text: 'We had been told the role was unfillable at our band. Ashrel showed us the market data, we adjusted, and the hire was made in a month.', who: 'Chief Data Officer, general insurer' },
+        { text: 'The difference is that the person briefing us is the person doing the search. Nothing was lost in translation.', who: 'GM Technology, superannuation fund' }
+      ],
+
+      featured: [
+        { img: 'img/feat-1.png', slotId: 'ash-feat-1', slotHint: 'Salary article image', tag: 'Salary & benchmarks', title: 'What AI engineers actually earn in Australian financial services', excerpt: 'Bands for ML engineering, applied science and platform roles across Sydney, Melbourne and Brisbane, plus where the premiums have moved.', meta: 'August 2026 · 8 min read' },
+        { img: 'img/feat-2.png', slotId: 'ash-feat-2', slotHint: 'Governance article image', tag: 'AI governance', title: 'The AI governance hire nobody budgeted for', excerpt: 'Regulatory expectation has outrun the talent pool. What the role really needs to be, and why job titles are misleading you.', meta: 'July 2026 · 6 min read' },
+        { img: 'img/feat-3.png', slotId: 'ash-feat-3', slotHint: 'Hiring strategy image', tag: 'Hiring strategy', title: 'Why your AI job ad is filtering out the best candidates', excerpt: 'Six requirements we see on almost every brief that quietly halve the addressable market, and what to replace them with.', meta: 'July 2026 · 5 min read' }
+      ],
+
+      lead: {
+        meta: 'August 2026 · 12 min read',
+        title: 'The 2026 Australian AI Talent Report: supply, salary and the governance gap',
+        excerpt: 'Twelve months of mandate data across banking, insurance and superannuation: where candidate supply is genuinely thin, where the perceived shortage is really a compensation problem, and the three role families that will be hardest to hire in the next financial year.'
+      },
+
+      topics: topicNames.map((name) => ({
+        name,
+        select: () => this.setState({ topic: name }),
+        bg: this.state.topic === name ? '#121A38' : '#fff',
+        fg: this.state.topic === name ? '#ffffff' : '#3B4560'
+      })),
+
+      posts: this.filterPosts([
+        { img: 'img/post-1.png', slotId: 'ash-post-1', slotHint: 'Article image', tag: 'Market signals', title: 'Four quarters of AI hiring in Australian banking', excerpt: 'Mandate volume, role mix and where the new headcount is genuinely being created rather than relabelled.', meta: 'August 2026 · 7 min' },
+        { img: 'img/post-2.png', slotId: 'ash-post-2', slotHint: 'Article image', tag: 'Salary & benchmarks', title: 'Principal versus staff: paying for depth without inflating the band', excerpt: 'How financial services employers are restructuring senior technical ladders to compete for AI depth.', meta: 'July 2026 · 6 min' },
+        { img: 'img/post-3.png', slotId: 'ash-post-3', slotHint: 'Article image', tag: 'Hiring strategy', title: 'Sequencing an AI team: who to hire first', excerpt: 'The order of hires determines whether the second hire says yes. A practical sequence for a first AI capability.', meta: 'July 2026 · 9 min' },
+        { img: 'img/post-4.png', slotId: 'ash-post-4', slotHint: 'Article image', tag: 'AI governance', title: 'Reading an AI risk CV without a risk background', excerpt: 'What model validation experience looks like on paper, and the four claims worth probing in interview.', meta: 'June 2026 · 5 min' },
+        { img: 'img/post-5.png', slotId: 'ash-post-5', slotHint: 'Article image', tag: 'Market signals', title: 'The quiet return of the on-site expectation', excerpt: 'Hybrid policy is tightening across enterprise AI teams. What it costs you in candidate reach, measured.', meta: 'June 2026 · 4 min' },
+        { img: 'img/post-6.png', slotId: 'ash-post-6', slotHint: 'Article image', tag: 'Hiring strategy', title: 'Interview loops that AI candidates respect', excerpt: 'Five-stage processes lose the strongest people. A three-stage loop that still gets you a defensible decision.', meta: 'May 2026 · 6 min' }
+      ]),
+
+      contactRows: [
+        { k: 'Email', v: 'hello@ashrel.com' },
+        { k: 'Based in', v: 'Australia, national coverage' },
+        { k: 'Response time', v: 'One business day' }
+      ],
+
+      faqs: faqData.map(([q, a], i) => ({
+        q, a,
+        open: this.state.faq === i,
+        icon: this.state.faq === i ? '\u2212' : '+',
+        toggle: () => this.setState({ faq: this.state.faq === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
