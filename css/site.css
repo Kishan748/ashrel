@@ -312,7 +312,7 @@ main {
   color: #fff;
 }
 
-.btn--nav {
+.nav a.btn--nav {
   padding: 11px 20px;
   font-size: 14.5px;
   font-weight: 500;
@@ -320,7 +320,7 @@ main {
   color: #fff;
 }
 
-.btn--nav:hover {
+.nav a.btn--nav:hover {
   background: var(--blue);
   color: #fff;
 }
@@ -848,7 +848,7 @@ a.card:hover {
 
 .band {
   position: relative;
-  height: 540px;
+  min-height: 540px;
   margin-top: 104px;
   background: var(--navy);
   overflow: hidden;
@@ -869,10 +869,11 @@ a.card:hover {
 }
 
 .band-inner {
-  position: absolute;
-  inset: 0;
+  position: relative;
   display: flex;
   align-items: center;
+  min-height: 540px;
+  padding: 88px 0;
 }
 
 .band-copy {
@@ -1570,14 +1571,9 @@ a.card:hover {
     padding: 48px 28px;
   }
 
-  .band {
-    height: auto;
-    min-height: 460px;
-  }
-
   .band-inner {
-    position: relative;
-    padding: 72px 0;
+    min-height: 460px;
+    padding: 64px 0;
   }
 
   .band-copy {
