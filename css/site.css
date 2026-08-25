@@ -1562,6 +1562,22 @@ a.card:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* These became words rather than figures, so 40px no longer fits two
+     columns: "AU only" and "Specialist" were wrapping to a second line and
+     leaving the row uneven. */
+  .metric {
+    padding: 26px 20px;
+  }
+
+  .metric b {
+    font-size: 29px;
+  }
+
+  .metric span {
+    font-size: 12.5px;
+    margin-top: 6px;
+  }
+
   .card-grid,
   .quote-grid {
     grid-template-columns: 1fr;
@@ -2180,5 +2196,148 @@ a.card:hover {
 @media (max-width: 620px) {
   .hero--full h1 {
     font-size: 32px;
+  }
+}
+
+/* ---------- Scroll motion ----------
+   Word-mask heading reveals and staggered fade-ups. Everything here is gated
+   behind .motion, which is set by an inline script in <head>. Without JS the
+   class never lands, so content renders normally rather than staying hidden. */
+
+.motion .rv {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Let descenders clear the mask without affecting layout. */
+  padding-bottom: .14em;
+  margin-bottom: -.14em;
+}
+
+.motion .rv > span {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform .85s cubic-bezier(.16, 1, .3, 1);
+  will-change: transform;
+}
+
+.motion .is-revealed .rv > span,
+.motion .rv.is-revealed > span {
+  transform: translateY(0);
+}
+
+.motion .fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16, 1, .3, 1);
+}
+
+.motion .fade-up.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion .rv > span,
+  .motion .fade-up {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Mobile tap targets ----------
+   Audit at 375px found 15 controls under the 44px minimum, including the
+   menu button and every footer link. Padding is added rather than font-size
+   so nothing visually changes weight; list gaps are removed to absorb the
+   extra height. */
+
+@media (max-width: 960px) {
+  .nav-toggle {
+    padding: 13px 14px;
+  }
+
+  .footer-col ul {
+    gap: 0;
+  }
+
+  .footer-col a,
+  .footer-col li > span {
+    display: inline-block;
+    padding: 14px 0;
+  }
+
+  .footer-brand .email {
+    display: inline-block;
+    padding: 13px 0;
+  }
+
+  .footer-bar a {
+    display: inline-block;
+    padding: 14px 0;
+  }
+
+  .link-rule {
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+  }
+
+  .contact-row dd a {
+    display: inline-block;
+    padding: 13px 0;
+  }
+
+  .brand {
+    padding: 7px 0;
+  }
+}
+
+/* ---------- Mobile horizontal scrollers ----------
+   Stacked vertically, the practice grid alone runs over 2,000px on a phone.
+   Below 700px these three grids become swipeable rows: full-bleed, snapping,
+   with the next card peeking so the affordance is obvious without a hint.
+   Desktop layout is untouched. */
+
+@media (max-width: 700px) {
+  .h-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Break out of the wrap gutter so the row runs edge to edge. */
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding: 2px var(--gutter) 20px;
+    scroll-padding-left: var(--gutter);
+  }
+
+  .h-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .h-scroll > * {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    height: auto;
+  }
+
+  /* The practice grid draws its hairlines with a background and 1px gaps,
+     which only works as a grid. Give each cell its own border instead. */
+  .practice-grid.h-scroll {
+    background: transparent;
+    border: 0;
+  }
+
+  .practice-grid.h-scroll .practice-cell {
+    border: 1px solid var(--line);
+  }
+
+  .h-scroll:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: -3px;
   }
 }

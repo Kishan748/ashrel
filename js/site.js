@@ -283,6 +283,127 @@
     });
   }
 
+  /* ---------------------------------------------------------------
+     Scroll motion
+
+     Two effects, both fire once on entry:
+       - headings split into words, each rising from behind its own mask
+       - grouped items fading up in sequence
+
+     Gated on the .motion class, which an inline <head> script sets before
+     first paint. If JS is off the class never lands and nothing is hidden.
+     --------------------------------------------------------------- */
+
+  function splitIntoWords(el) {
+    // Only plain-text headings; anything with markup inside is left alone.
+    if (el.children.length) return false;
+
+    var words = el.textContent.trim().split(/\s+/);
+    if (!words.length) return false;
+
+    var frag = document.createDocumentFragment();
+    words.forEach(function (word, i) {
+      var mask = document.createElement('span');
+      mask.className = 'rv';
+      var inner = document.createElement('span');
+      inner.textContent = word;
+      inner.style.transitionDelay = (i * 55) + 'ms';
+      mask.appendChild(inner);
+      frag.appendChild(mask);
+      if (i < words.length - 1) frag.appendChild(document.createTextNode(' '));
+    });
+
+    el.textContent = '';
+    el.appendChild(frag);
+    return true;
+  }
+
+  function initScrollMotion() {
+    if (!document.documentElement.classList.contains('motion')) return;
+    if (reduceMotion || !window.IntersectionObserver) return;
+
+    var reveals = [].slice.call(document.querySelectorAll('[data-reveal]'));
+    reveals.forEach(splitIntoWords);
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+
+    reveals.forEach(function (el) { revealObserver.observe(el); });
+
+    // Staggered fade-ups. The container is observed rather than each child:
+    // inside a horizontal scroller the later cards sit outside the viewport
+    // horizontally, and observing them individually would leave them blank
+    // until swiped to.
+    var groups = [].slice.call(document.querySelectorAll('[data-stagger]'));
+    groups.forEach(function (group) {
+      [].slice.call(group.children).forEach(function (child, i) {
+        child.classList.add('fade-up');
+        child.style.transitionDelay = (i * 70) + 'ms';
+      });
+    });
+
+    var fadeObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        [].slice.call(entry.target.children).forEach(function (child) {
+          child.classList.add('is-in');
+        });
+        fadeObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+
+    groups.forEach(function (el) { fadeObserver.observe(el); });
+  }
+
+  /* ---------------------------------------------------------------
+     Horizontal scrollers
+
+     A scrollable region needs to be reachable by keyboard, but only while
+     it is actually scrollable, so the attributes are applied and removed
+     as the breakpoint changes.
+     --------------------------------------------------------------- */
+
+  // Nearest heading preceding the scroller, so the region gets a meaningful
+  // name even when it isn't wrapped in its own <section>.
+  function headingFor(el) {
+    var scope = el.closest('section') || el.closest('main') || document.body;
+    var headings = [].slice.call(scope.querySelectorAll('h1, h2, h3'));
+    var best = null;
+    headings.forEach(function (h) {
+      if (h.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) best = h;
+    });
+    return best ? best.textContent.trim() : 'Items';
+  }
+
+  function initScrollers() {
+    var scrollers = [].slice.call(document.querySelectorAll('.h-scroll'));
+    if (!scrollers.length) return;
+
+    function sync() {
+      scrollers.forEach(function (el) {
+        if (el.scrollWidth > el.clientWidth + 1) {
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('role', 'region');
+          if (!el.getAttribute('aria-label')) {
+            el.setAttribute('aria-label', headingFor(el) + ', scroll for more');
+          }
+        } else {
+          el.removeAttribute('tabindex');
+          el.removeAttribute('role');
+          el.removeAttribute('aria-label');
+        }
+      });
+    }
+
+    sync();
+    window.addEventListener('resize', sync);
+  }
+
   /* --------------------------------------------------------------- */
 
   function boot() {
@@ -291,6 +412,8 @@
     initTopics();
     initBriefForm();
     initSignup();
+    initScrollMotion();
+    initScrollers();
   }
 
   if (document.readyState === 'loading') {
