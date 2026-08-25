@@ -751,6 +751,12 @@ main {
   height: 100%;
 }
 
+/* Text-only cards (no card-media) get a top accent instead, so the card
+   doesn't read as a broken image placeholder. */
+.card:not(:has(.card-media)) .card-body {
+  border-top: 3px solid var(--navy);
+}
+
 a.card:hover {
   border-color: var(--cyan);
   color: var(--ink);
