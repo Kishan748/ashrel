@@ -2043,3 +2043,41 @@ a.card:hover {
     object-position: 80% 45%;
   }
 }
+
+/* Article lead image — sits above the body copy, never behind it, so no
+   scrim is needed and the composition carries no text-legibility constraint. */
+
+.article-lead {
+  margin: 0;
+  max-width: 74ch;
+  padding-top: 56px;
+}
+
+.article-lead img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+.article-lead figcaption {
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--mist);
+  line-height: 1.5;
+}
+
+.article-lead + .article-body {
+  padding-top: 44px;
+}
+
+@media (max-width: 620px) {
+  .article-lead {
+    padding-top: 36px;
+  }
+
+  .article-lead + .article-body {
+    padding-top: 32px;
+  }
+}
