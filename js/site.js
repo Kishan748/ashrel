@@ -380,6 +380,63 @@
     return best ? best.textContent.trim() : 'Items';
   }
 
+  // Position dots for the swipe rows. They double as jump controls, so they
+  // are real buttons rather than decoration, giving a non-swipe way to reach
+  // any card.
+  function buildDots(scroller) {
+    var items = [].slice.call(scroller.children);
+    if (items.length < 2) return;
+
+    var dots = document.createElement('div');
+    dots.className = 'scroll-dots';
+
+    var buttons = items.map(function (item, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Show item ' + (i + 1) + ' of ' + items.length);
+      btn.addEventListener('click', function () {
+        scroller.scrollTo({
+          left: item.offsetLeft - items[0].offsetLeft,
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+      });
+      dots.appendChild(btn);
+      return btn;
+    });
+
+    scroller.parentNode.insertBefore(dots, scroller.nextSibling);
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var origin = items[0].offsetLeft;
+      var best = Infinity;
+      var index = 0;
+      items.forEach(function (item, i) {
+        var distance = Math.abs((item.offsetLeft - origin) - scroller.scrollLeft);
+        if (distance < best) {
+          best = distance;
+          index = i;
+        }
+      });
+      buttons.forEach(function (btn, i) {
+        if (i === index) {
+          btn.setAttribute('aria-current', 'true');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    scroller.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+
+    update();
+  }
+
   function initScrollers() {
     var scrollers = [].slice.call(document.querySelectorAll('.h-scroll'));
     if (!scrollers.length) return;
@@ -400,6 +457,7 @@
       });
     }
 
+    scrollers.forEach(buildDots);
     sync();
     window.addEventListener('resize', sync);
   }

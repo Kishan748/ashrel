@@ -2311,7 +2311,7 @@ a.card:hover {
     /* Break out of the wrap gutter so the row runs edge to edge. */
     margin-left: calc(var(--gutter) * -1);
     margin-right: calc(var(--gutter) * -1);
-    padding: 2px var(--gutter) 20px;
+    padding: 2px var(--gutter) 10px;
     scroll-padding-left: var(--gutter);
   }
 
@@ -2339,5 +2339,55 @@ a.card:hover {
   .h-scroll:focus-visible {
     outline: 3px solid var(--cyan);
     outline-offset: -3px;
+  }
+}
+
+
+/* ---------- Scroller dots ----------
+   Position indicator for the mobile swipe rows, doubling as jump controls.
+   Hidden by default so they never appear where the grid isn't scrollable. */
+
+.scroll-dots {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .scroll-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin-top: 2px;
+  }
+
+  .scroll-dots button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+
+  .scroll-dots button::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--field);
+    transition: background .25s ease, transform .25s ease;
+  }
+
+  .scroll-dots button[aria-current='true']::after {
+    background: var(--cyan);
+    transform: scale(1.4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-dots button::after {
+      transition: none;
+    }
   }
 }
